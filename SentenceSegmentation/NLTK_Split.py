@@ -6,7 +6,7 @@ storypath = 'SentenceSegmentation/story/'+'theGOLDENBIRD.txt'
 
 def sentence_token_nltk(str):
     sent_tokenize_list = sent_tokenize(str)
-    return sent_tokenize_list
+    return  sent_tokenize_list
 
 def sentence_split(str_centence):
     list_ret = list()
