@@ -37,7 +37,7 @@ class TestDataset(object):
         self.src_spk = config.src_spk
         self.trg_spk = config.trg_spk
 
-        self.mc_files = sorted(glob.glob(join(config.test_data_dir, f'{config.src_spk}*.npy')))
+        self.mc_files = sorted(glob.glob(join(config.test_data_dir,config.src_spk, f'{config.src_spk}*.npy')))
         self.src_spk_stats = np.load(join(config.train_data_dir, f'{config.src_spk}_stats.npz'))
         self.src_wav_dir = f'{config.wav_dir}/{config.src_spk}'
 
@@ -58,7 +58,7 @@ class TestDataset(object):
         self.spk_c_trg = spk_cat
 
 
-    def get_batch_test_data(self, batch_size=4):
+    def get_batch_test_data(self, batch_size=1):
         batch_data = []
         print(self.mc_files)
         for i in range(batch_size):
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     # Model configuration.
     parser.add_argument('--num_speakers', type=int, default=10, help='dimension of speaker labels')
-    parser.add_argument('--num_converted_wavs', type=int, default=0, help='number of wavs to convert.')
+    parser.add_argument('--num_converted_wavs', type=int, default=1, help='number of wavs to convert.')
     parser.add_argument('--resume_iters', type=int, default=None, help='step to resume for testing.')
     parser.add_argument('--src_spk', type=str, default='p262', help = 'source speaker.')
     parser.add_argument('--trg_spk', type=str, default='p225', help = 'target speaker.')
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     # Directories.
     parser.add_argument('--train_data_dir', type=str, default='./src_feature')
     parser.add_argument('--test_data_dir', type=str, default='./src_feature')
-    parser.add_argument('--wav_dir', type=str, default="./src_feature")
+    parser.add_argument('--wav_dir', type=str, default="./src_audio")
     parser.add_argument('--log_dir', type=str, default='./logs')
     parser.add_argument('--model_save_dir', type=str, default='./models')
     parser.add_argument('--convert_dir', type=str, default='./converted')
