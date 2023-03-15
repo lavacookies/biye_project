@@ -1,7 +1,7 @@
 import codecs
 from nltk.tokenize import sent_tokenize
 
-storypath = 'SentenceSegmentation/story/'+'theGOLDENBIRD.txt'
+storypath = 'SentenceSegmentation/story/'+'Cinderella.txt'
 
 
 def sentence_token_nltk(str):
