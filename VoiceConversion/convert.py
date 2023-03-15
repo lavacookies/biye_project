@@ -14,19 +14,8 @@ from utils import *
 import glob
 import soundfile as sf 
 
-# Below is the accent info for the used 10 speakers.
-spk2acc = {'262': 'Edinburgh', #F
-           '272': 'Edinburgh', #M
-           '229': 'SouthEngland', #F 
-           '232': 'SouthEngland', #M
-           '292': 'NorthernIrishBelfast', #M 
-           '293': 'NorthernIrishBelfast', #F 
-           '360': 'AmericanNewJersey', #M
-           '361': 'AmericanNewJersey', #F
-           '248': 'India', #F
-           '251': 'India'} #M
-
-speakers = ['p262', 'p272', 'p229', 'p232', 'p292', 'p293', 'p360', 'p361', 'p248', 'p225']
+# speakers = ['p262', 'p272', 'p225', 'p0', 'p1']
+speakers = ['p0', 'p1']
 spk2idx = dict(zip(speakers, range(len(speakers))))
 
 class TestDataset(object):
