@@ -148,3 +148,5 @@ if __name__ == '__main__':
     if config.resume_iters is None:
         raise RuntimeError("Please specify the step number for resuming.")
     test(config)
+
+# convert.py --resume_iters 200000 --src_spk p262 --trg_spk p272
