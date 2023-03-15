@@ -1,7 +1,8 @@
 import codecs
 from nltk.tokenize import sent_tokenize
+import argparse
 
-storypath = 'SentenceSegmentation/story/'+'Cinderella.txt'
+# storypath = 'SentenceSegmentation/story/'+'Cinderella.txt'
 
 
 def sentence_token_nltk(str):
@@ -19,7 +20,8 @@ def sentence_split(str_centence):
             list_ret.append(s_str)
     return list_ret
 
-def main():
+
+def main(storypath):
     with codecs.open(storypath, 'r', encoding='utf-8') as fp:
         str = fp.read().strip()
 
@@ -30,4 +32,16 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--story', type=str, help='the story to split')
+
+    config = parser.parse_args()
+    
+    print(config)
+    if config.story is None:
+        raise RuntimeError("Please enter the the story path which want to split.")
+    
+    main(config.story)
+
+# python NLTK_Split.py --story ./story/LittleRedRidingHood.txt
