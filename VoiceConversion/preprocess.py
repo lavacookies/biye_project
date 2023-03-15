@@ -19,7 +19,7 @@ def resample(spk, origin_wavpath, target_wavpath):
 
     origin_wavpath = origin_wavpath.replace("/","\\")
     target_wavpath = target_wavpath.replace("/","\\")
-    print('\n\n\n',spk , origin_wavpath , target_wavpath)
+    # print('\n\n\n',spk , origin_wavpath , target_wavpath)
 
     wavfiles = [i for i in os.listdir(join(origin_wavpath, spk)) if i.endswith(".wav")]
     # if '228' in spk:
@@ -136,16 +136,11 @@ if __name__ == '__main__':
     executor = ProcessPoolExecutor(max_workers=num_workers)
 
     work_dir = target_wavpath
-    # spk_folders = os.listdir(work_dir)
-    # print("processing {} speaker folders".format(len(spk_folders)))
-    # print(spk_folders)
-
     futures = []
     for spk in speaker_used:
         spk_path = os.path.join(work_dir, spk)
         futures.append(executor.submit(partial(get_spk_world_feats, spk_path, mc_dir_train, mc_dir_test, sample_rate)))
-    # result_list = [future.result() for future in tqdm(futures)]
-    # print(result_list)
+
     sys.exit(0)
 
 # python preprocess.py --sample_rate 16000 --origin_wavpath /data/VCTK-Corpus/wav48  --target_wavpath /data/VCTK-Corpus/wav48 --mc_dir_train /data/mc/train  --mc_dir_test /data/mc/test  
