@@ -1,9 +1,14 @@
 import pyttsx3
 
-engine = pyttsx3.init()
+def TexttoSppech(content):
+    engine = pyttsx3.init()
+    # engine.say(content)
+    engine.save_to_file(content, 'speech.wav')
+    engine.runAndWait()
 
-text = "I like to eat, eat, eat apples and bananas.?"
+if __name__=="__main__":
 
-engine.say(text)
-
-engine.runAndWait()
+    with open("./content.txt", 'r', encoding='utf-8') as fp:
+        content = fp.read()
+        print(content)
+        TexttoSppech(content)
