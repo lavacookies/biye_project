@@ -10,7 +10,7 @@ python convert.py
 ```
 you will get converted result in "./converted/200000"
 
-### Custum
+### Custum data
 the custum data should put in "./src_audio/"
 src_spk in p0 folder
 trg_spk in p1 folder
