@@ -2,6 +2,8 @@ import codecs
 from nltk.tokenize import sent_tokenize
 import argparse
 
+import csv
+
 # storypath = 'SentenceSegmentation/story/'+'Cinderella.txt'
 
 
@@ -29,14 +31,19 @@ def main(storypath):
 
     sentence_str = sentence_token_nltk(str) #sent_tokenize
     sentence_str_2 = sentence_split(str) # ? ! .
-    for i in sentence_str:
-        print(i,end='\n\n')
+    
+    with open('output.csv', 'w', newline='', encoding='big5') as csvfile:
+        writer = csv.writer(csvfile)
+
+        for i in sentence_str:
+            print(i,end='\n\n')
+            writer.writerow([i])
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--story', type=str, default='theGOLDENBIRD', help='the story to split')
+    parser.add_argument('--story', type=str, default='theGoodBargain', help='the story to split')
 
     config = parser.parse_args()
     
