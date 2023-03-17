@@ -22,6 +22,8 @@ def sentence_split(str_centence):
 
 
 def main(storypath):
+    storypath = "./story/"+storypath+".txt"
+
     with codecs.open(storypath, 'r', encoding='utf-8') as fp:
         str = fp.read().strip()
 
@@ -34,7 +36,7 @@ def main(storypath):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--story', type=str, help='the story to split')
+    parser.add_argument('--story', type=str, default='theGOLDENBIRD', help='the story to split')
 
     config = parser.parse_args()
     

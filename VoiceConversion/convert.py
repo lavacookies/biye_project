@@ -152,4 +152,4 @@ if __name__ == '__main__':
     #     raise RuntimeError("Please specify the step number for resuming.")
     test(config)
 
-# convert.py --resume_iters 200000 --src_spk p262 --trg_spk p272
+# python convert.py --resume_iters 200000 --src_spk p262 --trg_spk p272
