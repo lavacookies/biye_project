@@ -1,5 +1,9 @@
 **/__pycache__
 
+SentenceSegmentation/output.csv
+
+TTS/speech.wav
+
 VoiceConversion/src_feature/
 VoiceConversion/converted/
 VoiceConversion/src_audio/p0/

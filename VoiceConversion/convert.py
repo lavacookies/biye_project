@@ -14,8 +14,21 @@ from utils import *
 import glob
 import soundfile as sf 
 
-# speakers = ['p262', 'p272', 'p225', 'p0', 'p1']
-speakers = ['p0', 'p1']
+# Below is the accent info for the used 10 speakers.
+spk2acc = {'p0':'src_spk',
+           'p1':'trg_spk',
+           '262': 'Edinburgh', #F
+           '272': 'Edinburgh', #M
+           '229': 'SouthEngland', #F 
+           '232': 'SouthEngland', #M
+           '292': 'NorthernIrishBelfast', #M 
+           '293': 'NorthernIrishBelfast', #F 
+           '360': 'AmericanNewJersey', #M
+           '361': 'AmericanNewJersey', #F
+           '248': 'India', #F
+           '251': 'India'} #M
+
+speakers = ['p262', 'p272', 'p0', 'p1', 'p292', 'p293', 'p360', 'p361', 'p248', 'p225']
 spk2idx = dict(zip(speakers, range(len(speakers))))
 
 class TestDataset(object):
@@ -119,9 +132,9 @@ if __name__ == '__main__':
     # Model configuration.
     parser.add_argument('--num_speakers', type=int, default=11, help='dimension of speaker labels')
     parser.add_argument('--num_converted_wavs', type=int, default=1, help='number of wavs to convert.')
-    parser.add_argument('--resume_iters', type=int, default=None, help='step to resume for testing.')
-    parser.add_argument('--src_spk', type=str, default='p262', help = 'source speaker.')
-    parser.add_argument('--trg_spk', type=str, default='p225', help = 'target speaker.')
+    parser.add_argument('--resume_iters', type=int, default=200000, help='step to resume for testing.')
+    parser.add_argument('--src_spk', type=str, default='p0', help = 'source speaker.')
+    parser.add_argument('--trg_spk', type=str, default='p262', help = 'target speaker.')
 
     # Directories.
     parser.add_argument('--train_data_dir', type=str, default='./src_feature')
@@ -135,8 +148,8 @@ if __name__ == '__main__':
     config = parser.parse_args()
     
     print(config)
-    if config.resume_iters is None:
-        raise RuntimeError("Please specify the step number for resuming.")
+    # if config.resume_iters is None:
+    #     raise RuntimeError("Please specify the step number for resuming.")
     test(config)
 
-# convert.py --resume_iters 200000 --src_spk p262 --trg_spk p272
+# python convert.py --resume_iters 200000 --src_spk p262 --trg_spk p272

@@ -6,6 +6,17 @@ and source code is from https://github.com/liusongxiang/StarGAN-Voice-Conversion
 ## Usage
 the step only need to do is run:
 ```
-python main.py --src_wav {SrcWavPath} --trg_spk {TrgcWavPath}
+python convert.py
 ```
-under the folder /VoiceConversion/
+you will get converted result in "./converted/200000"
+
+### Custum data
+the custum data should put in "./src_audio/"
+src_spk in p0 folder
+trg_spk in p1 folder
+
+then run:
+```
+python preprocess.py
+python convert.py --resume_iters 200000 --src_spk p0 --trg_spk p1
+```
